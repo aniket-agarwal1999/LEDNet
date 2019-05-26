@@ -12,7 +12,7 @@ Currently this repo contains the directory model containing the whole model arch
 ```python
 from model import return_model
 ....
-# So the below line will initialize the LEDNet model 128*128 images
+# So the below line will initialize the LEDNet model for 128*128 images
 seg_model = return_model(input_nc = 3, output_nc = 22, netG = 'lednet_128')
 # Also the input_channels and output_channels can be handled accordingly
 ```
@@ -25,3 +25,4 @@ Although most of the things have been taken up directly from what was specified 
 3. Also `BatchNorm2d` has been in every `SSnbt` module, as the results were not that great in its absence.
 4. There is application of `Dropout2d` in every `SSnbt` module after concatenation of its left and right branch.
 5. Most importantly, for the upsampling in the end and also in the `APN` module, I have used `Bilinear Interpolation`. I also tried using `ConvTraspose2d` initially but it lead very poor results and also checkered effects in the final results.
+6. **Also this model works for the case of 128\*128 and 256\*256 images**, in contrast to input size of images in the original paper.
